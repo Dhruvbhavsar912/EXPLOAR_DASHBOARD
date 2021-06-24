@@ -1,0 +1,513 @@
+<html>
+<head>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<script>
+  $(document).ready(function() {
+	$('.nav-btn').on('click', function(event) {
+		event.preventDefault();
+		/* Act on the event */
+		$('.sidebar').slideToggle('fast');
+
+		window.onresize = function(){
+			if ($(window).width() >= 768) {
+				$('.sidebar').show();
+			} else {
+				$('.sidebar').hide();
+			}
+		};
+	});
+});
+</script>
+
+<style>
+@import 'https://fonts.googleapis.com/css?family=Lato:300,400';
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body, html {
+	font-family: 'Lato', sans-serif;
+	font-size: 20px;
+	height: 100%;
+	position: relative;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+a {
+	color: #fff;
+	text-decoration: none; 
+}
+
+.nav-btn {
+	width: 100%;
+	height: 35px;
+	padding-top: 4px;
+	color: #D5D3D3;
+	background-color: #212121;			 ;
+	text-align: center;
+	cursor: pointer;
+	display: none;
+}
+.nav-btn:active {
+	background-color: #090909; 
+}
+
+header {
+	height: 50px;
+	width: 100%;
+	background-color: #274C6B;
+	display: none;
+}
+
+header .logo {
+	opacity: 0.9;
+	font-size: 120%;
+	padding-top: 9px;
+	padding-left: 8px;
+	color: #fff;
+}
+header .logo span {
+	font-weight: 300;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.sidebar {
+	width: 250px;
+	background-color: #302F2F;
+	position: fixed;
+	top: 0px;
+	left: 0;
+	bottom: 0;
+	box-shadow: 1px 0px 10px #777;
+}
+
+.sidebar nav > a {
+	font-size: 150%;
+	display: inline-block;
+	padding: 30px 0px;
+	padding-left: 30px;
+	opacity: 0.7;
+	transition: all 0.2s;
+}
+.sidebar nav > a:hover {
+	opacity: 1;
+}
+
+.sidebar nav a span {
+	font-weight: 300;
+}
+
+.sidebar nav ul {
+	list-style: none;
+}
+
+.sidebar nav ul li {
+	font-size: 70%;
+	padding: 19px 0;	
+	padding-left: 20px;
+	border-bottom: 0.5px solid #111;
+}
+
+.sidebar nav ul li:nth-child(1):hover {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(1).active {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(2):hover {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(2).active {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(3):hover {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(3).active {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(4):hover {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(4).active {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(5):hover {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li:nth-child(5).active {
+	background-color: #f1c40f;
+}
+
+
+.sidebar nav ul li a {
+	color: #D7D5D5;
+}
+
+.sidebar nav ul li:hover a{
+	color: #fff;
+}
+
+.main-content {
+	background-color: #fafafa;
+	width: calc(100% - 250px);
+	height: 100%;
+	margin-left: 250px;
+	padding: 20px 30px;
+}
+.main-content .panel-wrapper {
+	margin: 20px 0;
+	box-shadow: 0px 1px 5px #777;
+}
+
+.main-content .panel-wrapper .panel-head {
+	background-color: #00A5F2;
+	color: #fff;
+	padding: 10px 10px;
+	border: 1px solid #00A5F2;
+}
+.main-content .panel-wrapper .panel-body {
+	padding: 20px 10px;
+	font-size: 80%;
+}
+
+@media only screen and (max-width: 420px){
+	header {
+		display: block;
+	}
+	.nav-btn {
+		display: block;
+	}
+	.sidebar {
+		position: relative;
+		height: 378px;
+		width: 100%;
+		display: none;
+		margin-bottom: 40px;
+		z-index: 1000;
+	}
+	.main-content {
+		width: 100%;
+		margin-left: 0;
+		z-index: -1;
+		position: relative;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	header {
+		display: block;
+	}
+	.nav-btn {
+		display: block;
+	}
+	.sidebar {
+		position: relative;
+		height: 378px;
+		width: 100%;
+		display: none;
+		margin-bottom: 40px;
+		z-index: 1000;
+	}
+	.main-content {
+		width: 100%;
+		margin-left: 0;
+		z-index: -1;
+		position: relative;
+	}
+}
+</style>
+
+<body>
+ <div>ExploAR</div>
+</header>
+<div class="nav-btn">Menu</div>
+
+  <div class="sidebar">
+    <nav>
+      <a href="{% url 'home' %}" >ExploAR</span></a>
+      <ul>
+        <li>
+		<a href="{% url 'home' %}">Dashboard</a></li>
+        <li class="active"><a href="{% url 'create_rfp' %}" >Create RFP</a></li>
+        <li ><a href="{% url 'rfp2' %}" >Incoming RFP</a></li>
+        <li><a href="{% url 'user_detail' %}" >User Detail</a></li>
+		<li><a href="{% url 'rfp1' %}" >Form</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+  
+     <h1 style="color:black;">Create RFP</h1>
+	 
+		<hr style="color:black; ">
+		<p >This page is used to create an RFP (Request for Proposal) form for the clientele. Certain
+			default parameters have already been added to the form such as:
+
+			<ul style="padding-left:30px;">
+			<li> Project Name</li>
+			<li> Date </li>
+			<li> Client Company Name</li>
+			<li> Client Company Representative Name Email & Phone no</li>
+			<li> Product Name</li>
+			<li> Quantity </li>
+			<li> Company Service </li>
+			<li> Company Goals</li>
+			<li> Project Description </li>
+			<li> Last Date for Proposal</li>
+			
+			</ul>
+
+			If you wish to add more parameters to the RFP form, please do so by clicking insert below.
+			Once the form is ready, you can upload it by pressing the submit button.</p>
+		<hr style="color:black; ">
+		
+    <div class="row form-group" style="margin-top:30px;">
+        
+            <button class="btn btn-block btn-success" id="insert_btn" data-toggle="modal" data-target="#insert_data">INSERT</button>
+       
+       
+    </div>
+   
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Field Name</th>
+                        <th>Field Type</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                  
+                    {% for student in students %}
+                    <tr>
+                        <td class="editable" data-type="name">{{ student.name }}</td>
+                        <td class="editable" data-type="type">{{ student.type }}</td>
+                        <td class="btn-td-block"><button class="btn btn-block btn-delete btn-danger">DELETE</button></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+			<a href="rfp_d/" > <button type="submit" class="btn btn-primary" id="final" method="post">Submit</button></a>
+			</br>
+			</br>
+			</br>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div id="insert_data" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h4 class="modal-title">Insert Fields</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+
+          <div class="form-group">
+              <label>Field Name : </label>
+              <input type="text" name="name" id="ins_name" class="form-control" placeholder="Name">
+          </div>
+          
+           <div class="form-group">
+              <label>Field Type: </label>
+              <select name="type" class="form-control" id="ins_type">
+                  <option>Int</option>
+                  <option>Float</option>
+                  <option>Double</option>
+                  <option>Date</option>
+                  <option>String</option>
+              </select>
+			  
+          </div>
+		  <div class="form-group">
+              <label>Product Name </label>
+              <select name="type" class="form-control" id="ins_type">
+                  <option>prod_1</option>
+                  <option>prod_2</option>
+                  <option>prod_3</option>
+                  <option>prod_4</option>
+                  
+              </select>
+			  
+          </div>
+          <div class="form-group">
+              <input type="button" name="submit" class="btn btn-block btn-info btn-insert-data" value="INSERT DATA">
+          </div>
+          <div class="form-group">
+              <div class="alert alert-success" id="ins_success" style="display:none">
+
+              </div>
+               <div class="alert alert-danger" id="ins_error" style="display:none">
+
+              </div>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+    $(".btn-insert-data").click(function(){
+
+        var name=$("#ins_name").val();
+        var type=$("#ins_type").val();
+        if(name==""){
+            $("#ins_error").text("Please Enter Field Name")
+            $("#ins_error").show()
+            return;
+        }
+       
+        else{
+                $(".btn-insert-data").attr("disabled","disabled");
+                $(".btn-insert-data").text("Inserting... Please Wait..");
+            $.ajax({
+                url:'{% url 'insert' %}',
+                type:'POST',
+                data:{name:name,type:type}
+            })
+            .done(function(response){
+                if(response['error']==false){
+                    $("#ins_error").hide();
+                    $("#ins_success").text(response['errorMessage']);
+                    $("#ins_success").show();
+                    var html_data="<tr><td>"+response['id']+"</td><td class='editable' data-type='name'>"+name+"</td><td class='editable' data-type='type'>"+type+"</td><td>"+response['created_at']+"</td><td class='btn-td-block'><button class='btn btn-block btn-delete btn-danger'>DELETE</button></td></tr>";
+                    $(".table tbody").append(html_data);
+                }
+                else{
+                    $("#ins_success").hide();
+                    $("#ins_error").text(response['errorMessage']);
+                    $("#ins_error").show();
+                }
+            })
+            .fail(function(){
+                 $("#ins_success").hide();
+                 $("#ins_error").text("Something Went Wrong!");
+                 $("#ins_error").show();
+            })
+            .always(function(){
+                $(".btn-insert-data").removeAttr("disabled");
+                $(".btn-insert-data").text("INSERT STUDENT");
+				location.reload();
+            })
+        }
+    })
+
+    $("#update_btn").click(function(){
+            $("#update_btn").hide();
+            $("#save_all_btn").show();
+
+       $(".editable").each(function(){
+           var value=$(this).text();
+           var types=$(this).data('type');
+           if(types!='type'){
+                var html_data="<input type='text' name='"+types+"'  class='form-control input_"+types+" input_data' value='"+value+"'>";
+                $(this).html(html_data);
+           }
+           else{
+                var html_data="<select name='"+types+"'  class='form-control input_"+types+" input_data'>";
+                if(value=="Male"){
+                    html_data+="<option selected>Male</option><option>Female</option>";
+                }
+                else{
+                    html_data+="<option>Male</option><option selected>Female</option>";
+                }
+                html_data+="</select>";
+                $(this).html(html_data);
+           }
+        });
+    });
+
+   
+	$("#final").click(function(){
+
+            $.ajax({
+                url:'{% url 'rfp_d' %}',
+                type:'POST',
+                data:{name:name,type:type}
+            })
+            
+        
+    })
+
+	
+	
+	
+	
+	
+	
+	
+	$(document).on("click",".btn-delete",function(){
+            var this_html=$(this);
+            this_html.attr("disabled","disabled");
+            this_html.text("DELETING....");
+            var id=this_html.parent().parent().children().first().text();
+            //console.log(id);
+            $.ajax({
+                url:'{% url 'delete_data' %}',
+                type:'POST',
+                data:{name:name}
+            })
+            .done(function(response){
+                if(response['error']==false){
+                    this_html.parent().parent().remove();
+                    $("#upt_error").hide();
+                    $("#upt_success").text(response['errorMessage']);
+                    $("#upt_success").show();
+
+                }
+                else{
+                    $("#upt_success").hide();
+                    $("#upt_error").text(response['errorMessage']);
+                    $("#upt_error").show();
+                }
+            })
+            .fail(function(){
+                 $("#upt_success").hide();
+                 $("#upt_error").text("Something Went Wrong!");
+                 $("#upt_error").show();
+            });
+    });
+</script>
+</body>
+</html>

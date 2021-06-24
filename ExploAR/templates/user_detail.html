@@ -1,0 +1,372 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if request.session.uid %}
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script>
+  $(document).ready(function() {
+	$('.nav-btn').on('click', function(event) {
+		event.preventDefault();
+		/* Act on the event */
+		$('.sidebar').slideToggle('fast');
+
+		window.onresize = function(){
+			if ($(window).width() >= 768) {
+				$('.sidebar').show();
+			} else {
+				$('.sidebar').hide();
+			}
+		};
+	});
+});
+</script>
+
+<style>
+@import 'https://fonts.googleapis.com/css?family=Lato:300,400';
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body, html {
+	font-family: 'Lato', sans-serif;
+	font-size: 20px;
+	height: 100%;
+	position: relative;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+a {
+	color: #fff;
+	text-decoration: none; 
+}
+
+.nav-btn {
+	width: 100%;
+	height: 35px;
+	padding-top: 4px;
+	color: #D5D3D3;
+	background-color: #212121;			 ;
+	text-align: center;
+	cursor: pointer;
+	display: none;
+}
+.nav-btn:active {
+	background-color: #090909; 
+}
+
+header {
+	height: 50px;
+	width: 100%;
+	background-color: #274C6B;
+	display: none;
+}
+
+header .logo {
+	opacity: 0.9;
+	font-size: 120%;
+	padding-top: 9px;
+	padding-left: 8px;
+	color: #fff;
+}
+header .logo span {
+	font-weight: 300;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.sidebar {
+	width: 250px;
+	background-color: #302F2F;
+	position: fixed;
+	top: 0px;
+	left: 0;
+	bottom: 0;
+	box-shadow: 1px 0px 10px #777;
+}
+
+.sidebar nav > a {
+	font-size: 150%;
+	display: inline-block;
+	padding: 30px 0px;
+	padding-left: 30px;
+	opacity: 0.7;
+	transition: all 0.2s;
+}
+.sidebar nav > a:hover {
+	opacity: 1;
+}
+
+.sidebar nav a span {
+	font-weight: 300;
+}
+
+.sidebar nav ul {
+	list-style: none;
+}
+
+.sidebar nav ul li {
+	font-size: 70%;
+	padding: 19px 0;	
+	padding-left: 20px;
+	border-bottom: 0.5px solid #111;
+}
+
+.sidebar nav ul li:nth-child(1):hover {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(1).active {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(2):hover {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(2).active {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(3):hover {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(3).active {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(4):hover {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(4).active {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(5):hover {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li:nth-child(5).active {
+	background-color: #f1c40f;
+}
+
+
+.sidebar nav ul li a {
+	color: #D7D5D5;
+}
+
+.sidebar nav ul li:hover a{
+	color: #fff;
+}
+
+.main-content {
+	background-color: #fafafa;
+	width: calc(100% - 250px);
+	height: 100%;
+	margin-left: 250px;
+	padding: 20px 30px;
+}
+.main-content .panel-wrapper {
+	margin: 20px 0;
+	box-shadow: 0px 1px 5px #777;
+}
+
+.main-content .panel-wrapper .panel-head {
+	background-color: #00A5F2;
+	color: #fff;
+	padding: 10px 10px;
+	border: 1px solid #00A5F2;
+}
+.main-content .panel-wrapper .panel-body {
+	padding: 20px 10px;
+	font-size: 80%;
+}
+
+@media only screen and (max-width: 420px){
+	header {
+		display: block;
+	}
+	.nav-btn {
+		display: block;
+	}
+	.sidebar {
+		position: relative;
+		height: 378px;
+		width: 100%;
+		display: none;
+		margin-bottom: 40px;
+		z-index: 1000;
+	}
+	.main-content {
+		width: 100%;
+		margin-left: 0;
+		z-index: -1;
+		position: relative;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	header {
+		display: block;
+	}
+	.nav-btn {
+		display: block;
+	}
+	.sidebar {
+		position: relative;
+		height: 378px;
+		width: 100%;
+		display: none;
+		margin-bottom: 40px;
+		z-index: 1000;
+	}
+	.main-content {
+		width: 100%;
+		margin-left: 0;
+		z-index: -1;
+		position: relative;
+	}
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+
+.button:hover{
+  opacity: 0.7;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+
+  <div>ExploAR</div>
+</header>
+<div class="nav-btn">Menu</div>
+<div class="container">
+  <div class="sidebar">
+    <nav>
+      <a href="{% url 'home' %}">ExploAR</span></a>
+      <ul>
+        <li>
+		<a href="{% url 'home' %}">Dashboard</a></li>
+        <li><a href="{% url 'create_rfp' %}" >Create RFP</a></li>
+        <li><a href="{% url 'rfp2' %}" >Incoming RFP</a></li>
+        <li class="active"><a href="{% url 'user_detail' %}" >User Detail</a></li>
+		<li><a href="{% url 'rfp1' %}" >Form</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="main-content">
+   <!--
+	  <p>Welcome to My Site , {% if user.is_authenticated %}{{ user.username }}{% else %}visitor{% endif %}!</p>
+		  <p>
+		  
+			email_id =   {{email}}</br>
+			profit=   {{Profit}}</br>
+			date =   {{date}}</br>
+			Contact =  {{contact}}</br>
+			Company = {{company}}</br>
+			Desigantion = {{Desigantion }}</br>
+
+		  </p> -->
+				
+			  
+			<h2 style="text-align:center">Profile</h2>
+			
+			<div class="card" >
+			</br>
+			<!-- <CENTER> <img src="{% static 'mysite/image/logo.png' %}"  width="80%" > </CENTER>
+			</br> -->
+			  <h5 id="display"></h5>
+			  <h5 id="display1"></h5>
+			  <h5>{{email}}</h5>
+			  <p class="title">{{company}}, {{Desigantion }}</p>
+			  <p>{{date}}</p>
+			  <p>{{contact}}</p>
+			  <div style="margin: 24px 0;">
+			  </div>
+			  <p><button class="button">Contact</button></p>
+			</div>
+
+  </div>
+</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+	<!--
+<script>
+var config = {
+	    apiKey: "AIzaSyB2evBO7JLMJsGxls3vX-1rrSj2wR3iprI",
+	    authDomain: "exploar-32063.firebaseapp.com",
+		databaseURL: "https://exploar-32063-default-rtdb.firebaseio.com/",
+	    storageBucket: "exploar-32063.appspot.com",
+	  };
+	  firebase.initializeApp(config);
+
+	  // create variable to reference the database
+	  var database = firebase.database();
+	  
+	  
+	  database.ref().on("value", function(snap){
+	  	$("#display").html(snap.val().data);
+	  });
+	  
+	  
+	 
+</script> -->
+</body>
+
+
+</html>
+{% endif%}
+
+
+{% endblock %}
+
+
+  

@@ -1,0 +1,437 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if request.session.uid %}
+<!DOCTYPE html>
+<html class="no-js" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8">
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("#btnPrint").live("click", function () {
+            var divContents = $("#dvContainer").html();
+            var printWindow = window.open('', '', 'height=400,width=800');
+            printWindow.document.write('<html><head><title>DIV Contents</title>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(divContents);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+        });
+    </script>
+	<script>
+function myFunction() {
+  document.getElementById("myP").contentEditable = true;
+  
+}
+function myFunction1() {
+  document.getElementById("myP").contentEditable = false;
+}
+</script>
+  <script>
+  $(document).ready(function() {
+	$('.nav-btn').on('click', function(event) {
+		event.preventDefault();
+		/* Act on the event */
+		$('.sidebar').slideToggle('fast');
+
+		window.onresize = function(){
+			if ($(window).width() >= 768) {
+				$('.sidebar').show();
+			} else {
+				$('.sidebar').hide();
+			}
+		};
+	});
+});
+</script>
+
+<style>
+@import 'https://fonts.googleapis.com/css?family=Lato:300,400';
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body, html {
+	font-family: 'Lato', sans-serif;
+	font-size: 20px;
+	height: 100%;
+	position: relative;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+a {
+	color: #fff;
+	text-decoration: none; 
+}
+
+.nav-btn {
+	width: 100%;
+	height: 35px;
+	padding-top: 4px;
+	color: #D5D3D3;
+	background-color: #212121;			 ;
+	text-align: center;
+	cursor: pointer;
+	display: none;
+}
+.nav-btn:active {
+	background-color: #090909; 
+}
+
+header {
+	height: 50px;
+	width: 100%;
+	background-color: #274C6B;
+	display: none;
+}
+
+header .logo {
+	opacity: 0.9;
+	font-size: 120%;
+	padding-top: 9px;
+	padding-left: 8px;
+	color: #fff;
+}
+header .logo span {
+	font-weight: 300;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.sidebar {
+	width: 250px;
+	background-color: #302F2F;
+	position: fixed;
+	top: 0px;
+	left: 0;
+	bottom: 0;
+	box-shadow: 1px 0px 10px #777;
+}
+
+.sidebar nav > a {
+	font-size: 150%;
+	display: inline-block;
+	padding: 30px 0px;
+	padding-left: 30px;
+	opacity: 0.7;
+	transition: all 0.2s;
+}
+.sidebar nav > a:hover {
+	opacity: 1;
+}
+
+.sidebar nav a span {
+	font-weight: 300;
+}
+
+.sidebar nav ul {
+	list-style: none;
+}
+
+.sidebar nav ul li {
+	font-size: 70%;
+	padding: 19px 0;	
+	padding-left: 20px;
+	border-bottom: 0.5px solid #111;
+}
+
+.sidebar nav ul li:nth-child(1):hover {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(1).active {
+	background-color: #e67e22;
+}
+
+.sidebar nav ul li:nth-child(2):hover {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(2).active {
+	background-color: #2980b9;
+}
+
+.sidebar nav ul li:nth-child(3):hover {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(3).active {
+	background-color: #16a085;
+}
+
+.sidebar nav ul li:nth-child(4):hover {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(4).active {
+	background-color: #8e44ad;
+}
+
+.sidebar nav ul li:nth-child(5):hover {
+	background-color: #f1c40f;
+}
+
+.sidebar nav ul li:nth-child(5).active {
+	background-color: #f1c40f;
+}
+
+
+.sidebar nav ul li a {
+	color: #D7D5D5;
+}
+
+.sidebar nav ul li:hover a{
+	color: #fff;
+}
+
+.main-content {
+	width: calc(100% - 250px);
+	height: 100%;
+	margin-left: 250px;
+	padding: 20px 30px;
+}
+.main-content .panel-wrapper {
+	margin: 20px 0;
+	box-shadow: 0px 1px 5px #777;
+}
+
+.main-content .panel-wrapper .panel-head {
+	background-color: #00A5F2;
+	color: #fff;
+	padding: 10px 10px;
+	border: 1px solid #00A5F2;
+}
+.main-content .panel-wrapper .panel-body {
+	padding: 20px 10px;
+	font-size: 80%;
+}
+
+@media only screen and (max-width: 420px){
+	header {
+		display: block;
+	}
+	.nav-btn {
+		display: block;
+	}
+	.sidebar {
+		position: relative;
+		height: 378px;
+		width: 100%;
+		display: none;
+		margin-bottom: 40px;
+		z-index: 1000;
+	}
+	.main-content {
+		width: 100%;
+		margin-left: 0;
+		z-index: -1;
+		position: relative;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	header {
+		display: block;
+	}
+	.nav-btn {
+		display: block;
+	}
+	.sidebar {
+		position: relative;
+		height: 378px;
+		width: 100%;
+		display: none;
+		margin-bottom: 40px;
+		z-index: 1000;
+	}
+	.main-content {
+		width: 100%;
+		margin-left: 0;
+		z-index: -1;
+		position: relative;
+	}
+}
+</style>
+
+</head>
+<body>
+
+<header>
+
+  <div>ExploAR</div>
+</header>
+<div class="nav-btn">Menu</div>
+<div class="container">
+
+  <div class="sidebar">
+    <nav>
+      <a href="{% url 'home' %}">ExploAR</span></a>
+      <ul>
+        <li>
+		<a href="{% url 'home' %}">Dashboard</a></li>
+        <li><a href="{% url 'create_rfp'  %}" >Create RFP</a></li>
+        <li><a href="{% url 'rfp2' %}" >Incoming RFP</a></li>
+        <li><a href="{% url 'user_detail' %}" >User Detail</a></li>
+		<li><a href="{% url 'rfp1' %}" >Form</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+
+  <div class="main-content">
+  
+		  <form id="form1">
+		<div id="dvContainer">
+   
+		  <p id="myP">
+		  <!--
+			Name:{{post.name}}</br>
+			Quantity:{{post.quantity}}</br>
+			Goals:{{post.goals}}</br>
+			Criteria:{{post.Criteria}}</br>
+			Service:{{post.Service}}</br>
+			Budget:{{post.budget}}</br>
+			Product_id:{{post.productid}}</br> -->
+			
+			{{post.proj_name}} </br></br>
+
+
+			{{post.date}}</br></br>
+			Issued by:</br></br>
+
+
+			{{post.c_name}}</br></br>
+
+
+			{{post.c_name}} Representative:</br></br>
+
+
+			POC {{post.c_rep_name}}</br></br>
+
+
+			POC {{post.c_rep_email}}</br></br>
+
+
+			POC {{post.c_rep_ph}}</br></br>
+
+
+			<b>1. Introduction & Background</b></br></br>
+
+
+			{{post.c_name}} , is in need of {{post.quantity}}  of {{post.prod_name}}  and is accepting proposals in response to this Request for Proposal (this “RFP,” or this “Request for Proposal”) in order to find a qualified source to provide {{post.Service}} .</br></br>
+
+
+			The objective of this Request for Proposal is to locate a source that will provide the best overall value to {{post.c_name}} ]. While price is a significant factor, other criteria will form the basis of our decision.</br></br>
+
+
+			Our goals regarding the said product are:</br>
+
+			{{post.goals}} </br></br>
+
+
+			<b>2. Submission Guidelines & Requirements</b></br></br>
+
+
+			The following submission guidelines & requirements apply to this Request for Proposal:</br></br>
+
+
+			First and foremost, only qualified individuals or firms should submit proposals in response to this Request for Proposal.</br></br>
+
+
+			Bidders intent on submitting a proposal should notify the representative identified on the cover page no later than {{post.l_date_p}} .</br></br>
+
+
+			A price proposal must be provided at the convenience of the manufacturer. This price proposal should indicate the overall fixed price for the product.</br></br>
+
+
+			Proposals must be signed by a representative that is authorized to commit the bidder's company.</br></br>
+
+
+
+			<b>3. Evaluation Factors</b></br></br>
+
+
+			{{post.c_name}}  will rate proposals based on the following factors, with cost being the most important factor:</br></br>
+
+
+			Responsiveness to the requirements set forth in this Request for Proposal</br></br>
+
+			Samples of similar products</br>
+
+			Price Quote</br></br>
+
+
+
+			<b>4. Project Name</b> </br></br>
+
+
+			<b>5. Project Description</br></br></b>
+			
+			Additional Parameters required by us</br></br>
+			
+			{%for p in post.additional %}
+			     {{p}}  </br>
+			{% endfor %}
+			
+		</div>
+			
+			
+			</br></br>
+			
+						
+
+
+
+		  </p>
+		  
+		<input type="button" class="btn btn-primary" value="Edit"  onClick="myFunction()"/>&nbsp;&nbsp;&nbsp;
+		
+		<input type="button" class="btn btn-primary" value="Save"  onClick="myFunction1()" /></br></br>
+		  
+		  </br></br>
+		  
+		  <p><b>We kindly request you to provide a quote for {{post.proj_name}} at the earliest</b></p>
+		  <input type="text">
+		  
+		  
+		<input type="button" class="btn btn-primary" value="Quote" /></br></br></br></br>
+		  
+		  
+		  
+		  
+		<input type="button" class="btn btn-primary" value="Download RFP" id="btnPrint" />
+		</form>
+		</br>
+		</br>
+		</br>
+		</br>
+
+
+
+  </div>
+</div>
+
+</body>
+
+
+</html>
+{% endif%}
+
+
+{% endblock %}
+
+
+  
